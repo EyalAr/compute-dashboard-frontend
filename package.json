@@ -1,0 +1,26 @@
+{
+  "name": "compute-dashboard-frontend",
+  "version": "0.0.0",
+  "description": "compute dashboard",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EyalAr/compute-dashboard-frontend.git"
+  },
+  "author": "Eyal Arubas <eyalarubas@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/EyalAr/compute-dashboard-frontend/issues"
+  },
+  "homepage": "https://github.com/EyalAr/compute-dashboard-frontend#readme",
+  "devDependencies": {
+    "eslint": "^5.16.0"
+  },
+  "dependencies": {
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "react-admin": "^2.8.3"
+  }
+}
