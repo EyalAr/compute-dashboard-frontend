@@ -4,6 +4,10 @@
   "description": "compute dashboard",
   "main": "index.js",
   "scripts": {
+    "dev": "",
+    "build": "",
+    "build-docker": "npm run build && docker build . -t compute-dashboard-frontend",
+    "docker": "docker run --rm -d -p 8080:80 -p 8081:9090 --add-host api_backend:127.0.0.1:9090 compute-dashboard-frontend",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
