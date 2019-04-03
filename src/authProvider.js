@@ -1,15 +1,13 @@
 import { AUTH_LOGIN, AUTH_LOGOUT, AUTH_ERROR, AUTH_CHECK } from 'react-admin';
+import { login, logout, isLoggedIn } from './auth';
 
 export default (type, params) => {
     if (type === AUTH_LOGIN) {
         const { username, password } = params;
-        return fetch('/api/login', {
-          method: 'POST',
-          body: new URLSearchParams({ username, password })
-        });
+        return login(username, password);
     }
     if (type === AUTH_LOGOUT) {
-      return fetch('/api/logout');
+      return logout();
     }
     if (type === AUTH_ERROR) {
         const { status } = params;
@@ -19,7 +17,7 @@ export default (type, params) => {
         return Promise.resolve();
     }
     if (type === AUTH_CHECK) {
-        return Promise.resolve();
+        return isLoggedIn().then(res => res ? Promise.resolve : Promise.reject());
     }
-    return Promise.reject('Unknown method');
+    return Promise.reject(new Error('Unknown method'));
 };
