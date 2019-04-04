@@ -6,8 +6,9 @@
   "scripts": {
     "dev": "webpack-dev-server --mode development",
     "build": "webpack --mode production",
-    "build-docker": "npm run build && docker build . -t compute-dashboard-frontend",
-    "docker": "docker run --rm -d -p 8080:80 -p 8081:9090 --add-host api_backend:127.0.0.1:9090 compute-dashboard-frontend",
+    "docker-build": "docker build . -t compute-dashboard-frontend",
+    "docker-network": "docker network create --driver bridge compute-dashboard || true",
+    "docker": "docker run --rm -d -p 8080:80 --network compute-dashboard --name compute-dashboard-frontend compute-dashboard-frontend",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

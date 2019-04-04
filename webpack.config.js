@@ -19,14 +19,16 @@ module.exports = {
     ]
   },
   plugins: [
-    new HtmlWebpackPlugin()
+    new HtmlWebpackPlugin({
+      title: "Compute Dashboard"
+    })
   ],
   devtool: 'inline-source-map',
   devServer: {
     contentBase: './build',
     proxy: {
       '/api': {
-        target: 'http://localhost:8081',
+        target: process.env.BACKEND || 'http://localhost:8081',
         pathRewrite: {'^/api' : ''}
       }
     }

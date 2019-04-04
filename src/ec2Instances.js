@@ -2,8 +2,8 @@ import React from 'react';
 import { List, Datagrid, TextField, EmailField } from 'react-admin';
 
 export const EC2InstanceList = props => (
-    <List {...props}>
-        <Datagrid rowClick="edit">
+    <List {...props} bulkActionButtons={false}>
+        <Datagrid>
             <TextField source="name" />
             <TextField source="id" />
             <TextField source="type" />

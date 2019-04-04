@@ -4,63 +4,91 @@ The dashboard UI is built with React and is based on the
 [`react-admin`](https://github.com/marmelab/react-admin) project;
 which provides an easy way to create CRUD interfaces.
 
+## Quickstart
+
+Follow the [quickstart instructions of the backend](https://github.com/EyalAr/compute-dashboard-backend#quickstart),
+and then copy-paste to your terminal:
+
+```sh
+npm install && \            # install dependencies
+npm run build && \          # build web app into ./build/
+npm run docker-build && \   # build docker container with a nginx server
+npm run docker-network && \ # set up bridge network to connect with backend
+npm run docker              # run server
+```
+
+And point your browser to [`http://localhost:8080`](http://localhost:8080).
+
+Log in with username/password: `demo`/`demo`.
+
 ## Usage
 
-**Install dependencies (do this before each of the following):**
+Install dependencies (do this before each of the following):
 
 ```sh
 npm install
 ```
 
-**Run tests:**
+Run tests:
 
 ```sh
 npm run test
 ```
 
-**Run development server with mock data:**
-
-```sh
-npm run dev
-```
-
-**Run development server with real backend:**
+Run development server:
 
 ```sh
 BACKEND=localhost:8081 npm run dev
+# If not specified, BACKEND defaults to localhost:8081
 ```
 
 See the [backend project](https://github.com/EyalAr/compute-dashboard-backend)
-for instructions of how to run the backend on a host port.
+for instructions of how to run the backend.
+
+### Using Docker
+
+Both the frontend and the backend are designed to run in Docker containers.
+They are built independently, but in order for them to communicate from within
+their containers, some networking mechanics needs to be done (see more in the
+Design section below).
 
 **Build a docker container:**
 
 ```sh
 npm run build
 docker build . -t compute-dashboard-frontend
-# npm run build-docker
+# npm run docker-build
 ```
 
-**Run your built container with the backend:**
-
-(See Design section below for explanation of how this works.)
-
-Assuming the backend is running on host port `8081`:
+Set up a network bridge:
 
 ```sh
-docker run --rm -d -p 8080:80 -p 8081:9090 --add-host api_backend:127.0.0.1:9090 compute-dashboard-frontend
+docker network create --driver bridge compute-dashboard
+# npm run docker-network
+```
+
+Run your built container:
+
+```sh
+docker run --rm -d \
+  -p 8080:80 \                  # route port 8080 on host to port 80
+  --network compute-dashboard \ # connect to the compute-dashboard network
+  --name compute-dashboard-frontend compute-dashboard-frontend
 # npm run docker
 ```
 
-Now you can go to `http://localhost:8080` to load the frontend.
+Now point your browser to [`http://localhost:8080`](http://localhost:8080) to
+load the frontend.
+
+Log in with username/password: `demo`/`demo`.
 
 ## Design
 
 The frontend code assumes all API endpoints are available on `/api/*`.
 
 When running in development mode, the webpack development server proxies all
-calls to `/api/*` to either the mock server, or the backend provided in the
-`BACKEND` environment variable.
+calls to `/api/*` to the backend provided in the `BACKEND` environment variable
+(or to `http://localhost:8081` by default).
 
 In production, this proxying needs to be done by the environment which serves
 the frontend app.
@@ -68,19 +96,19 @@ the frontend app.
 In this repo, a `Dockerfile` is provided which builds an nginx server which:
 
 1. Serves the frontend code.
-2. Takes care of proxying `/api/*` to port `http://api_backend` upstream inside
-   the container.
+2. Takes care of proxying `/api/*` to `http://compute-dashboard-backend`
+   upstream inside the container.
 
-There are many ways to make sure `http://api_backend` points to the correct
-place (Kubernetes networking, docker compose, etc.).
+There are many ways to make sure `http://compute-dashboard-backend` points to
+the correct place (with Kubernetes networking, docker compose, etc.).
 
-For this exercise we're using pure docker (see above). In order for the API
-backend to be available inside the frontend container we need to:
+For this exercise we're using pure `docker` networking (see above):
 
-1. Have the backend running on a port on the host (e.g. `localhost:8081`)
-2. Map the host port to an internal port of the frontend container (e.g. `9090`)
-3. Map the `api_backend` host name to the local container port on which the
-   backend is available.
+1. We create a bridge network called `compute-dashboard`.
+2. We connect the backend container to that network. Docker service discovery
+   makes sure it's available as the host `compute-dashboard-backend`.
+3. We connect the frontend container to that network.
+   `http://compute-dashboard-backend` is available inside the container.
 
 See the [backend project](https://github.com/EyalAr/compute-dashboard-backend)
-for instructions of how to run the backend on a host port.
+for instructions of how to run the backend.
