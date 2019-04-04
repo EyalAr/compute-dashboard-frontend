@@ -7,7 +7,7 @@ import { getAuthHeaders } from './auth'
 const transformApiResponse = (payload, type) => {
   switch (type) {
     case GET_LIST:
-      return { data: payload, total: payload.length };
+      return payload;
     default:
       throw new Error(`Transforming API response for ${type} is not supported`);
   }
