@@ -1,0 +1,95 @@
+{
+  "data": [
+    {
+      "name": "ipsa",
+      "id": "voluptatibus",
+      "type": "a1.medium",
+      "state": "pending",
+      "az": "ap-northeast-2",
+      "public_ip": "50.62.223.14",
+      "private_ip": "32.239.234.101"
+    },
+    {
+      "name": "qui",
+      "id": "voluptatibus",
+      "type": "a1.xlarge",
+      "state": "shutting-down",
+      "az": "eu-west-1",
+      "public_ip": "28.59.142.201",
+      "private_ip": "23.137.36.122"
+    },
+    {
+      "name": "et",
+      "id": "voluptates",
+      "type": "a1.large",
+      "state": "pending",
+      "az": "ap-southeast-1",
+      "public_ip": "4.235.127.158",
+      "private_ip": "27.180.43.3"
+    },
+    {
+      "name": "nam",
+      "id": "voluptatem",
+      "type": "a1.4xlarge",
+      "state": "stopping",
+      "az": "ap-southeast-1",
+      "public_ip": "172.203.104.223",
+      "private_ip": "23.247.71.193"
+    },
+    {
+      "name": "voluptates",
+      "id": "vitae",
+      "type": "a1.2xlarge",
+      "state": "shutting-down",
+      "az": "ap-northeast-2",
+      "public_ip": "221.48.215.107",
+      "private_ip": "82.180.65.207"
+    },
+    {
+      "name": "quo",
+      "id": "vero",
+      "type": "a1.2xlarge",
+      "state": "shutting-down",
+      "az": "us-east-1",
+      "public_ip": "112.86.107.225",
+      "private_ip": "82.31.57.9"
+    },
+    {
+      "name": "voluptatem",
+      "id": "vero",
+      "type": "a1.xlarge",
+      "state": "terminated",
+      "az": "ap-northeast-2",
+      "public_ip": "127.200.113.220",
+      "private_ip": "146.169.97.38"
+    },
+    {
+      "name": "molestiae",
+      "id": "velit",
+      "type": "a1.2xlarge",
+      "state": "stopped",
+      "az": "eu-west-1",
+      "public_ip": "97.151.129.173",
+      "private_ip": "181.208.99.53"
+    },
+    {
+      "name": "maiores",
+      "id": "velit",
+      "type": "a1.2xlarge",
+      "state": "stopped",
+      "az": "eu-west-1",
+      "public_ip": "206.122.91.77",
+      "private_ip": "102.7.251.81"
+    },
+    {
+      "name": "quaerat",
+      "id": "vel",
+      "type": "a1.large",
+      "state": "shutting-down",
+      "az": "eu-west-1",
+      "public_ip": "177.78.143.171",
+      "private_ip": "49.155.95.12"
+    }
+  ],
+  "total": 91
+}

@@ -11,7 +11,7 @@ and then copy-paste to your terminal:
 
 ```sh
 npm install && \            # install dependencies
-npm run build && \          # build web app into ./build/
+npm run build && \          # build web app into ./.build/
 npm run docker-build && \   # build docker container with a nginx server
 npm run docker-network && \ # set up bridge network to connect with backend
 npm run docker              # run server

@@ -9,7 +9,8 @@
     "docker-build": "docker build . -t compute-dashboard-frontend",
     "docker-network": "docker network create --driver bridge compute-dashboard || true",
     "docker": "docker run --rm -d -p 8080:80 --network compute-dashboard --name compute-dashboard-frontend compute-dashboard-frontend",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --coverage",
+    "lint": "eslint ./"
   },
   "repository": {
     "type": "git",
@@ -24,9 +25,16 @@
     "@babel/core": "^7.4.3",
     "@babel/preset-env": "^7.4.3",
     "@babel/preset-react": "^7.0.0",
+    "babel-jest": "^24.7.1",
     "babel-loader": "^8.0.5",
     "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-react": "^7.12.4",
     "html-webpack-plugin": "^3.2.0",
+    "jest": "^24.7.1",
+    "jest-fetch-mock": "^2.1.2",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0",
     "webpack-dev-server": "^3.2.1"
@@ -36,7 +44,7 @@
     "prop-types": "^15.7.2",
     "query-string": "^6.4.2",
     "react": "^16.8.6",
-    "react-admin": "^2.8.3",
+    "react-admin": "^2.8.5",
     "react-dom": "^16.8.6"
   }
 }

@@ -2,35 +2,38 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: './src/index.jsx',
   output: {
-    path: path.resolve(__dirname, 'build'),
-    filename: 'index.js'
+    path: path.resolve(__dirname, '.build'),
+    filename: 'index.js',
   },
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: /(node_modules)/,
         use: {
-          loader: 'babel-loader'
-        }
-      }
-    ]
+          loader: 'babel-loader',
+        },
+      },
+    ],
+  },
+  resolve: {
+    extensions: ['.js', '.jsx'],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: "Compute Dashboard"
-    })
+      title: 'Compute Dashboard',
+    }),
   ],
   devtool: 'inline-source-map',
   devServer: {
-    contentBase: './build',
+    contentBase: './.build',
     proxy: {
       '/api': {
         target: process.env.BACKEND || 'http://localhost:8081',
-        pathRewrite: {'^/api' : ''}
-      }
-    }
-  }
+        pathRewrite: { '^/api': '' },
+      },
+    },
+  },
 };
