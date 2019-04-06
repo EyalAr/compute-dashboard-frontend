@@ -112,3 +112,20 @@ For this exercise we're using pure `docker` networking (see above):
 
 See the [backend project](https://github.com/EyalAr/compute-dashboard-backend)
 for instructions of how to run the backend.
+
+## Testing
+
+All unit tests are run with Jest.
+
+Code coverage is reported to the console and to `./.coverage`.
+
+CircleCI automatically runs tests on every commit (when pushed to Github).
+
+For E2E tests see [compute-dashboard-e2e](https://github.com/EyalAr/compute-dashboard-e2e)
+project.
+
+Unit tests for the UI components are [redundant since we're using react-admin](https://marmelab.com/react-admin/UnitTesting.html).
+
+Unit tests are implemented for non-UI modules.
+
+Run with `npm run test`
