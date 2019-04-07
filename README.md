@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/EyalAr/compute-dashboard-frontend.svg?style=svg)](https://circleci.com/gh/EyalAr/compute-dashboard-frontend)
+
 # Compute Dashboard Frontend
 
 The dashboard UI is built with React and is based on the
