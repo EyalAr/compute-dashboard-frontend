@@ -38,8 +38,8 @@ npm run test
 Run development server:
 
 ```sh
-BACKEND=http://localhost:8081 npm run dev
-# If not specified, BACKEND defaults to http://localhost:8081
+BACKEND=http://localhost:8081 PORT=8080 npm run dev
+# If not specified, BACKEND defaults to http://localhost:8081 and PORT to 8080
 ```
 
 See the [backend project](https://github.com/EyalAr/compute-dashboard-backend)

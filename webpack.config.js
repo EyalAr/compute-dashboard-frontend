@@ -28,6 +28,7 @@ module.exports = {
   ],
   devtool: 'inline-source-map',
   devServer: {
+    port: process.env.PORT || 8080,
     contentBase: './.build',
     proxy: {
       '/api': {
