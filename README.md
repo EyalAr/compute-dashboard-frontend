@@ -38,14 +38,14 @@ npm run test
 Run development server:
 
 ```sh
-BACKEND=localhost:8081 npm run dev
-# If not specified, BACKEND defaults to localhost:8081
+BACKEND=http://localhost:8081 npm run dev
+# If not specified, BACKEND defaults to http://localhost:8081
 ```
 
 See the [backend project](https://github.com/EyalAr/compute-dashboard-backend)
 for instructions of how to run the backend.
 
-### Using Docker
+### Using Docker (optional)
 
 Both the frontend and the backend are designed to run in Docker containers.
 They are built independently, but in order for them to communicate from within
