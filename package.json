@@ -44,7 +44,7 @@
     "prop-types": "^15.7.2",
     "query-string": "^6.4.2",
     "react": "^16.8.6",
-    "react-admin": "^2.8.5",
+    "react-admin": "^2.9.9",
     "react-dom": "^16.8.6"
   }
 }
